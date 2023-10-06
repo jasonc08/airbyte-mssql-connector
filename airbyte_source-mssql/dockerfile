@@ -1,0 +1,4 @@
+FROM airbyte/source-mssql:latest
+ 
+RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/' /etc/pki/tls/openssl.cnf && sed -i 's/CipherString = DEFAULT@SECLEVEL=2/CipherString = DEFAULT@SECLEVEL=1/' /etc/pki/tls/openssl.cnf
+RUN sed -i 's/TLSv1, TLSv1.1,//' /usr/lib/jvm/java-17-amazon-corretto/conf/security/java.security
